@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-vindo ao Cohort Advanced T2 - Academia Lendária</title>
+  <title>Cohort AIOS Advanced T2 — Inscrição Confirmada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -27,90 +27,168 @@
       --bb-gray-charcoal: #3D3D3D;
       --bb-gray-dim: #696969;
       --bb-gray-muted: #999999;
-      --bb-error: #EF4444;
-      --bb-flare: #ED4609;
-      --bb-blue: #0099FF;
-      --shadow-card: 0 4px 60px rgba(209, 255, 0, 0.04);
-      --shadow-glow: 0 0 30px rgba(209, 255, 0, 0.1);
       --bb-ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --bb-dur-fast: 0.2s;
       --bb-dur-medium: 0.4s;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(180deg, #000000 0%, #050505 40%, #0A0A0A 70%, #0F0F11 100%);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bb-dark);
       color: var(--bb-dim);
       min-height: 100vh;
-      padding: 2rem 1rem;
     }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
+    a {
+      text-decoration: none;
     }
 
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 3rem 2rem;
-      background: var(--bb-surface);
-      border-radius: 1.5rem;
-      border: 1px solid var(--bb-border);
-    }
-
-    .badge-pill {
-      display: inline-block;
-      border: 1px solid var(--bb-border);
-      border-radius: 100px;
-      padding: 0.75rem 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .badge-pill .aios {
-      color: var(--bb-lime);
-      font-size: 1.375rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    .badge-pill .label {
-      color: var(--bb-cream);
-      font-size: 1.375rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    .success-badge {
-      display: inline-flex;
+    /* ── Top Bar ── */
+    .top-bar {
+      border-bottom: 1px solid var(--bb-border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
       align-items: center;
-      gap: 0.625rem;
-      background: rgba(209, 255, 0, 0.08);
-      border: 1px solid rgba(209, 255, 0, 0.2);
-      border-radius: 100px;
-      padding: 0.625rem 1.5rem;
-      margin-bottom: 1.5rem;
+      justify-content: space-between;
+      background: var(--bb-surface);
     }
 
-    .success-dot {
-      width: 10px;
-      height: 10px;
+    .top-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .top-bar-brand .mark {
+      color: var(--bb-lime);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .top-bar-brand .sep {
+      color: var(--bb-gray-charcoal);
+      font-size: 0.75rem;
+    }
+
+    .top-bar-brand .name {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--bb-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .top-bar-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
       background: var(--bb-lime);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
+      animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      50% { opacity: 0.4; }
     }
 
-    .success-text {
+    .status-text {
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.625rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: var(--bb-lime);
-      letter-spacing: 3px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 3rem 2rem;
+      background: var(--bb-surface);
+      border: 1px solid var(--bb-border);
+      border-radius: 0;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--bb-lime);
+    }
+
+    .badge-program {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      border: 1px solid var(--bb-border);
+      border-radius: 0;
+      padding: 0.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-program .aios {
+      color: var(--bb-lime);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-program .label {
+      color: var(--bb-cream);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .confirmed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(209, 255, 0, 0.06);
+      border: 1px solid var(--bb-lime-border);
+      border-radius: 0;
+      padding: 0.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .confirmed-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--bb-lime);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .confirmed-text {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--bb-lime);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -118,12 +196,13 @@
       color: var(--bb-cream);
       font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
       margin-bottom: 0.75rem;
     }
 
     .header-sub {
-      font-size: 1.0625rem;
+      font-size: 1rem;
       color: var(--bb-dim);
       line-height: 1.7;
     }
@@ -132,16 +211,26 @@
       color: var(--bb-cream);
     }
 
-    /* CTA WhatsApp */
+    /* ── Section Label ── */
+    .section-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--bb-lime);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* ── CTA Section ── */
     .cta-section {
       background: var(--bb-surface);
       border: 1px solid var(--bb-lime-strong);
-      border-radius: 1.5rem;
+      border-radius: 0;
       padding: 2.5rem 2rem;
       text-align: center;
       margin-bottom: 2rem;
       position: relative;
-      overflow: hidden;
     }
 
     .cta-section::before {
@@ -150,20 +239,18 @@
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at center, rgba(209, 255, 0, 0.04), transparent 70%);
-      pointer-events: none;
+      height: 2px;
+      background: var(--bb-lime);
     }
 
     .cta-label {
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.625rem;
+      font-size: 0.65rem;
       font-weight: 500;
       color: var(--bb-lime);
-      letter-spacing: 3px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
-      position: relative;
     }
 
     .cta-title {
@@ -171,7 +258,6 @@
       font-weight: 700;
       color: var(--bb-cream);
       margin-bottom: 0.75rem;
-      position: relative;
     }
 
     .cta-desc {
@@ -179,99 +265,96 @@
       color: var(--bb-dim);
       margin-bottom: 1.75rem;
       line-height: 1.6;
-      position: relative;
     }
 
     .btn-primary {
       display: inline-block;
       background: var(--bb-lime);
       color: var(--bb-dark);
-      text-decoration: none;
-      padding: 1.125rem 3rem;
-      border-radius: 0.5rem;
+      padding: 1rem 2.5rem;
+      border-radius: 0;
       font-family: 'Roboto Mono', monospace;
-      font-weight: 700;
-      font-size: 0.8125rem;
-      letter-spacing: 2px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: all var(--bb-dur-medium) var(--bb-ease-smooth);
-      position: relative;
+      transition: all var(--bb-dur-fast) var(--bb-ease-smooth);
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(209, 255, 0, 0.3);
+      box-shadow: 0 0 20px rgba(209, 255, 0, 0.3), 0 0 40px rgba(209, 255, 0, 0.15);
     }
 
-    /* Info section */
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* ── Info Section ── */
     .info-section {
       margin-bottom: 2rem;
     }
 
-    .section-label {
-      font-family: 'Roboto Mono', monospace;
-      font-size: 0.625rem;
-      font-weight: 500;
-      color: var(--bb-lime);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-
-    .info-card {
-      background: var(--bb-surface);
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--bb-border);
       border: 1px solid var(--bb-border);
-      border-radius: 1rem;
-      padding: 1.75rem;
       margin-bottom: 1rem;
-      transition: all var(--bb-dur-medium) var(--bb-ease-smooth);
     }
 
-    .info-card:hover {
-      border-color: var(--bb-lime-strong);
-      transform: translateY(-2px);
+    .info-cell {
+      background: var(--bb-surface);
+      padding: 1.5rem;
+      transition: background var(--bb-dur-fast) var(--bb-ease-smooth);
     }
 
-    .info-card.highlight {
+    .info-cell:hover {
+      background: rgba(209, 255, 0, 0.03);
+    }
+
+    .info-cell.highlight {
       border-left: 2px solid var(--bb-lime);
       background: rgba(209, 255, 0, 0.04);
     }
 
-    .info-card-label {
+    .info-cell-label {
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.625rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: var(--bb-gray-dim);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.08em;
       margin-bottom: 0.5rem;
     }
 
-    .info-card-value {
+    .info-cell-value {
       font-size: 1.125rem;
       font-weight: 600;
       color: var(--bb-cream);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
-    .info-card-value.large {
+    .info-cell-value.accent {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--bb-lime);
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
+    .info-cell-meta {
+      font-size: 0.8rem;
+      color: var(--bb-dim);
+      margin-top: 0.25rem;
     }
 
-    /* Calendar */
-    .calendar-card {
+    /* ── Calendar Table ── */
+    .calendar-wrap {
       background: var(--bb-surface);
       border: 1px solid var(--bb-border);
-      border-radius: 1rem;
+      border-radius: 0;
       overflow: hidden;
       margin-bottom: 2rem;
     }
@@ -287,18 +370,18 @@
     }
 
     .calendar-table th {
-      padding: 0.875rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.5625rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: var(--bb-gray-dim);
-      letter-spacing: 1.5px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       text-align: left;
     }
 
     .calendar-table td {
-      padding: 0.875rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       border-bottom: 1px solid var(--bb-border);
       font-size: 0.875rem;
     }
@@ -307,40 +390,60 @@
       border-bottom: none;
     }
 
-    .calendar-table tbody tr.highlight {
+    .calendar-table tbody tr {
+      transition: background var(--bb-dur-fast) var(--bb-ease-smooth);
+    }
+
+    .calendar-table tbody tr:hover {
+      background: rgba(209, 255, 0, 0.03);
+    }
+
+    .calendar-table tbody tr.active-row {
       background: rgba(209, 255, 0, 0.04);
     }
 
-    .calendar-table tbody tr.highlight td:first-child {
+    .calendar-table tbody tr.active-row td:first-child {
       border-left: 2px solid var(--bb-lime);
     }
 
-    .date-cell {
+    .cell-week {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 500;
+      color: var(--bb-gray-dim);
+      font-size: 0.8rem;
+    }
+
+    .cell-week.hl {
+      color: var(--bb-lime);
+      font-weight: 700;
+    }
+
+    .cell-date {
       font-weight: 600;
       color: var(--bb-gray-dim);
       white-space: nowrap;
     }
 
-    .date-cell.hl {
-      font-weight: 700;
+    .cell-date.hl {
       color: var(--bb-lime);
+      font-weight: 700;
     }
 
-    .topic-cell {
+    .cell-topic {
       font-weight: 600;
-      color: rgba(245, 244, 231, 0.7);
+      color: rgba(245, 244, 231, 0.6);
     }
 
-    .calendar-table tbody tr.highlight .topic-cell {
+    .active-row .cell-topic {
       color: var(--bb-cream);
     }
 
-    /* Steps */
+    /* ── Steps ── */
     .steps-card {
       background: var(--bb-surface);
       border: 1px solid var(--bb-border);
       border-left: 2px solid var(--bb-lime);
-      border-radius: 1rem;
+      border-radius: 0;
       padding: 2rem;
       margin-bottom: 2rem;
     }
@@ -362,12 +465,12 @@
       min-width: 2rem;
       background: var(--bb-dark);
       border: 1px solid var(--bb-border);
-      border-radius: 50%;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--bb-gray-dim);
     }
@@ -383,77 +486,95 @@
     }
 
     .step-title {
-      font-size: 1rem;
+      font-size: 0.9375rem;
       font-weight: 600;
       color: var(--bb-cream);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .step-desc {
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       color: var(--bb-dim);
       line-height: 1.5;
     }
 
-    /* Support */
+    /* ── Support ── */
     .support-card {
       background: var(--bb-surface);
       border: 1px solid var(--bb-border);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      text-align: center;
+      border-radius: 0;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
       margin-bottom: 2rem;
     }
 
     .support-label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--bb-cream);
-      margin-bottom: 0.75rem;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--bb-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .support-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     .support-link {
       color: var(--bb-lime);
-      text-decoration: none;
-      font-size: 0.9375rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      transition: opacity var(--bb-dur-medium);
+      transition: opacity var(--bb-dur-fast);
     }
 
     .support-link:hover {
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
-    /* Footer */
+    .support-sep {
+      color: var(--bb-gray-charcoal);
+      font-size: 0.75rem;
+    }
+
+    /* ── Footer ── */
     .footer {
-      text-align: center;
-      padding-top: 2rem;
       border-top: 1px solid var(--bb-border);
+      padding-top: 2rem;
+      text-align: center;
     }
 
     .footer-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
       border: 1px solid var(--bb-border);
-      border-radius: 100px;
-      padding: 0.5rem 1.25rem;
+      border-radius: 0;
+      padding: 0.375rem 1rem;
       margin-bottom: 1rem;
     }
 
     .footer-badge .aios {
       color: var(--bb-lime);
-      font-size: 0.875rem;
-      font-weight: 600;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .footer-badge .label {
       color: var(--bb-dim);
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-
-    .footer-text {
-      font-size: 0.8125rem;
-      color: var(--bb-gray-charcoal);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .footer-links {
@@ -462,25 +583,36 @@
 
     .footer-link {
       color: var(--bb-gray-dim);
-      text-decoration: none;
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
       font-weight: 500;
       margin: 0 0.75rem;
-      transition: color var(--bb-dur-medium);
+      transition: color var(--bb-dur-fast);
     }
 
     .footer-link:hover {
       color: var(--bb-lime);
     }
 
-    .divider {
+    .footer-divider {
       color: var(--bb-gray-charcoal);
+      font-size: 0.75rem;
     }
 
-    /* Responsive */
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--bb-gray-charcoal);
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Responsive ── */
     @media (max-width: 640px) {
-      body {
-        padding: 1rem 0.5rem;
+      .container {
+        padding: 1.5rem 1rem 2rem;
+      }
+
+      .top-bar {
+        padding: 0.625rem 1rem;
       }
 
       .header {
@@ -501,8 +633,8 @@
 
       .calendar-table th,
       .calendar-table td {
-        padding: 0.75rem 1rem;
-        font-size: 0.8125rem;
+        padding: 0.625rem 1rem;
+        font-size: 0.8rem;
       }
 
       .steps-card {
@@ -510,116 +642,145 @@
       }
 
       .btn-primary {
-        padding: 1rem 2rem;
+        padding: 0.875rem 2rem;
         font-size: 0.75rem;
+      }
+
+      .support-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .support-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .support-sep {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <span class="mark">AiOS</span>
+      <span class="sep">/</span>
+      <span class="name">Advanced T2</span>
+    </div>
+    <div class="top-bar-status">
+      <div class="status-dot"></div>
+      <span class="status-text">Vaga confirmada</span>
+    </div>
+  </div>
+
   <div class="container">
 
     <!-- Header -->
     <div class="header">
-      <div class="badge-pill">
-        <span class="aios">AiOS</span><span class="label"> Advanced</span>
+      <div class="badge-program">
+        <span class="aios">AiOS</span>
+        <span class="label">Advanced</span>
       </div>
       <br>
-      <div class="success-badge">
-        <div class="success-dot"></div>
-        <span class="success-text">INSCRIÇÃO CONFIRMADA</span>
+      <div class="confirmed-badge">
+        <div class="confirmed-dot"></div>
+        <span class="confirmed-text">Inscricao confirmada</span>
       </div>
-      <h1>Parabéns, você está dentro!</h1>
+      <h1>Voce esta dentro.</h1>
       <p class="header-sub">
-        Sua vaga no <strong>Cohort AIOS Advanced - Turma 2</strong> está garantida.<br>
-        Em 8 semanas, seu projeto estará em produção com 80+ agentes IA.
+        Sua vaga no <strong>Cohort AIOS Advanced &mdash; Turma 2</strong> esta garantida.<br>
+        8 semanas. Seu projeto em producao.
       </p>
     </div>
 
     <!-- CTA WhatsApp -->
     <div class="cta-section">
-      <p class="cta-label">Seu Próximo Passo</p>
-      <h2 class="cta-title">Entre no Grupo do WhatsApp</h2>
+      <p class="cta-label">Seu proximo passo</p>
+      <h2 class="cta-title">Entre no grupo do WhatsApp</h2>
       <p class="cta-desc">
-        É por lá que você vai receber o link das aulas ao vivo,<br>avisos do programa e suporte da equipe.
+        Links das aulas ao vivo, avisos do programa e<br>suporte da equipe saem por la.
       </p>
-      <a href="https://chat.whatsapp.com/CDUn0i5PF3u1iLTjmc11hl" class="btn-primary">ENTRAR NO GRUPO DA TURMA</a>
+      <a href="https://chat.whatsapp.com/CDUn0i5PF3u1iLTjmc11hl" class="btn-primary">Entrar no grupo da turma</a>
     </div>
 
     <!-- Info Essencial -->
     <section class="info-section">
-      <h2 class="section-label">INFORMAÇÕES ESSENCIAIS</h2>
+      <h2 class="section-label">Dados do programa</h2>
       <div class="info-grid">
-        <div class="info-card highlight">
-          <div class="info-card-label">Primeira Aula</div>
-          <div class="info-card-value large">8 de Abril</div>
-          <div style="font-size: 0.875rem; color: var(--bb-dim); margin-top: 0.25rem;">Quarta-feira</div>
+        <div class="info-cell highlight">
+          <div class="info-cell-label">Primeira aula</div>
+          <div class="info-cell-value accent">8 Abr</div>
+          <div class="info-cell-meta">Quarta-feira</div>
         </div>
-        <div class="info-card">
-          <div class="info-card-label">Duração</div>
-          <div class="info-card-value">8 semanas</div>
-          <div style="font-size: 0.875rem; color: var(--bb-dim); margin-top: 0.25rem;">08/04 a 27/05</div>
+        <div class="info-cell">
+          <div class="info-cell-label">Duracao</div>
+          <div class="info-cell-value">8 semanas</div>
+          <div class="info-cell-meta">08/04 a 27/05</div>
         </div>
-        <div class="info-card">
-          <div class="info-card-label">Formato</div>
-          <div class="info-card-value">1x por semana</div>
-          <div style="font-size: 0.875rem; color: var(--bb-dim); margin-top: 0.25rem;">90-120 min ao vivo</div>
+        <div class="info-cell">
+          <div class="info-cell-label">Formato</div>
+          <div class="info-cell-value">1x/semana</div>
+          <div class="info-cell-meta">90-120 min ao vivo</div>
         </div>
       </div>
     </section>
 
     <!-- Calendario -->
     <section class="info-section">
-      <h2 class="section-label">CALENDÁRIO DE AULAS</h2>
-      <div class="calendar-card">
+      <h2 class="section-label">Calendario de aulas</h2>
+      <div class="calendar-wrap">
         <table class="calendar-table">
           <thead>
             <tr>
-              <th>Semana</th>
+              <th>Sem</th>
               <th>Data</th>
               <th>Tema</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="highlight">
-              <td class="date-cell hl">1</td>
-              <td class="date-cell hl">08/04 Qua</td>
-              <td class="topic-cell">Setup Profissional</td>
+            <tr class="active-row">
+              <td class="cell-week hl">01</td>
+              <td class="cell-date hl">08/04 Qua</td>
+              <td class="cell-topic">Setup Profissional</td>
             </tr>
             <tr>
-              <td class="date-cell">2</td>
-              <td class="date-cell">15/04 Qua</td>
-              <td class="topic-cell">Migração Completa</td>
+              <td class="cell-week">02</td>
+              <td class="cell-date">15/04 Qua</td>
+              <td class="cell-topic">Migracao Completa</td>
             </tr>
             <tr>
-              <td class="date-cell">3</td>
-              <td class="date-cell">22/04 Qua</td>
-              <td class="topic-cell">Design System Audit</td>
+              <td class="cell-week">03</td>
+              <td class="cell-date">22/04 Qua</td>
+              <td class="cell-topic">Design System Audit</td>
             </tr>
             <tr>
-              <td class="date-cell">4</td>
-              <td class="date-cell">29/04 Qua</td>
-              <td class="topic-cell">DS Implementação</td>
+              <td class="cell-week">04</td>
+              <td class="cell-date">29/04 Qua</td>
+              <td class="cell-topic">DS Implementacao</td>
             </tr>
             <tr>
-              <td class="date-cell">5</td>
-              <td class="date-cell">06/05 Qua</td>
-              <td class="topic-cell">AIOS Fundamentos</td>
+              <td class="cell-week">05</td>
+              <td class="cell-date">06/05 Qua</td>
+              <td class="cell-topic">AIOS Fundamentos</td>
             </tr>
             <tr>
-              <td class="date-cell">6</td>
-              <td class="date-cell">13/05 Qua</td>
-              <td class="topic-cell">Workflows</td>
+              <td class="cell-week">06</td>
+              <td class="cell-date">13/05 Qua</td>
+              <td class="cell-topic">Workflows</td>
             </tr>
             <tr>
-              <td class="date-cell">7</td>
-              <td class="date-cell">20/05 Qua</td>
-              <td class="topic-cell">Deploy</td>
+              <td class="cell-week">07</td>
+              <td class="cell-date">20/05 Qua</td>
+              <td class="cell-topic">Deploy</td>
             </tr>
             <tr>
-              <td class="date-cell">8</td>
-              <td class="date-cell">27/05 Qua</td>
-              <td class="topic-cell">Showcase</td>
+              <td class="cell-week">08</td>
+              <td class="cell-date">27/05 Qua</td>
+              <td class="cell-topic">Showcase</td>
             </tr>
           </tbody>
         </table>
@@ -628,27 +789,27 @@
 
     <!-- Proximos Passos -->
     <section class="info-section">
-      <h2 class="section-label">PRÓXIMOS PASSOS</h2>
+      <h2 class="section-label">Proximos passos</h2>
       <div class="steps-card">
         <div class="step active">
           <div class="step-number">1</div>
           <div class="step-content">
             <div class="step-title">Entre no grupo do WhatsApp</div>
-            <div class="step-desc">Link das aulas, avisos e suporte saem por lá</div>
+            <div class="step-desc">Links das aulas, avisos e suporte saem por la</div>
           </div>
         </div>
         <div class="step">
           <div class="step-number">2</div>
           <div class="step-content">
             <div class="step-title">Confira seu email</div>
-            <div class="step-desc">Enviamos um email de boas-vindas com mais detalhes</div>
+            <div class="step-desc">Enviamos um email de boas-vindas com detalhes adicionais</div>
           </div>
         </div>
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-content">
             <div class="step-title">Reserve as quartas na agenda</div>
-            <div class="step-desc">08/04 a 27/05 - 8 encontros ao vivo</div>
+            <div class="step-desc">08/04 a 27/05 &mdash; 8 encontros ao vivo</div>
           </div>
         </div>
       </div>
@@ -656,29 +817,31 @@
 
     <!-- Suporte -->
     <div class="support-card">
-      <p class="support-label">Precisa de ajuda?</p>
-      <p>
-        <a href="https://wa.me/5548988000116" class="support-link">+55 48 8800-0116 (WhatsApp)</a>
-        <span style="color: var(--bb-gray-charcoal); margin: 0 0.75rem;">|</span>
+      <span class="support-label">Suporte</span>
+      <div class="support-links">
+        <a href="https://wa.me/5548988000116" class="support-link">+55 48 8800-0116</a>
+        <span class="support-sep">|</span>
         <a href="mailto:suporte@academialendaria.ai" class="support-link">suporte@academialendaria.ai</a>
-      </p>
+      </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
       <div class="footer-badge">
-        <span class="aios">AiOS</span><span class="label"> Advanced</span>
+        <span class="aios">AiOS</span>
+        <span class="label">Advanced</span>
       </div>
       <div class="footer-links">
         <a href="https://cursedeca.com" class="footer-link">Plataforma</a>
-        <span class="divider">|</span>
+        <span class="footer-divider">|</span>
         <a href="https://academialendaria.ai" class="footer-link">Comunidade</a>
-        <span class="divider">|</span>
+        <span class="footer-divider">|</span>
         <a href="https://instagram.com/academialendaria" class="footer-link">Instagram</a>
       </div>
-      <p class="footer-text">Academia Lendária &copy; 2026</p>
+      <p class="footer-copy">Academia Lendaria &copy; 2026</p>
     </div>
 
   </div>
+
 </body>
 </html>
